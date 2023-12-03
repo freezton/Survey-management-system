@@ -1,6 +1,7 @@
 package com.example.authentication.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.List;
@@ -14,13 +15,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String email;
 
-    private String passwordHash;
+    private String password;
 
-    private String name;
-
-    private String surname;
+    @Column(unique = true)
+    private String username;
 
     @Transient
     private List<Long> surveyIds;
@@ -28,11 +29,9 @@ public class User {
     public User() {
     }
 
-    public User(String email, String passwordHash, String name, String surname) {
+    public User(String email, String password, String username) {
         this.email = email;
-        this.passwordHash = passwordHash;
-        this.name = name;
-        this.surname = surname;
+        this.password = password;
+        this.username = username;
     }
-
 }
