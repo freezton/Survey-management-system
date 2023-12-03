@@ -2,14 +2,12 @@ package com.example.authentication.security.jwt;
 
 import com.example.authentication.security.userdetails.UserDetailsImpl;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
@@ -32,6 +30,6 @@ public class JwtCore {
     }
 
     public String getUsernameFromToken(String token) {
-        return Jwts.parser().setSigningKey(secret.getBytes(StandardCharsets.UTF_8)).build().parseSignedClaims(token).getBody().getSubject();
+        return Jwts.parser().setSigningKey(secret.getBytes(StandardCharsets.UTF_8)).build().parseSignedClaims(token).getPayload().getSubject();
     }
 }
