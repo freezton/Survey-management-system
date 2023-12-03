@@ -32,6 +32,6 @@ public class JwtCore {
     }
 
     public String getUsernameFromToken(String token) {
-        return Jwts.parser().setSigningKey(secret).build().parseSignedClaims(token).getPayload().getSubject();
+        return Jwts.parser().setSigningKey(secret.getBytes(StandardCharsets.UTF_8)).build().parseSignedClaims(token).getBody().getSubject();
     }
 }

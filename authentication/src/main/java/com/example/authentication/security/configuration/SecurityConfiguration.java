@@ -71,8 +71,8 @@ public class SecurityConfiguration {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/secured/user").fullyAuthenticated()
                         .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/auth/secured/user").fullyAuthenticated()
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class);
