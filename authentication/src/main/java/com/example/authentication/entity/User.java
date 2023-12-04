@@ -23,15 +23,10 @@ public class User {
     @Column(unique = true)
     private String username;
 
-    @Transient
-    private List<Long> surveyIds;
+//    @Transient
+//    private List<Long> surveyIds;
 
     public User() {
     }
 
-    public User(String email, String password, String username) {
-        this.email = email;
-        this.password = password;
-        this.username = username;
-    }
 }

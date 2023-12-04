@@ -21,15 +21,12 @@ public class UserDetailsImpl implements UserDetails {
 
     private String username;
 
-    private List<Long> surveyIds;
-
     public static UserDetails build(User user) {
         return new UserDetailsImpl(
                 user.getId(),
                 user.getEmail(),
                 user.getPassword(),
-                user.getUsername(),
-                user.getSurveyIds()
+                user.getUsername()
         );
     }
 
