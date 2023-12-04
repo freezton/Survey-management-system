@@ -1,0 +1,16 @@
+package com.example.surveys.entity.answer;
+
+import com.example.surveys.entity.Option;
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.util.List;
+
+@Data
+@Entity
+public class MultipleChoiceAnswer extends Answer {
+
+    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "options_id")
+    private List<Option> options;
+}
