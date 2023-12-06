@@ -1,4 +1,7 @@
 package com.example.surveys.repository;
 
-public interface QuestionRepository {
+import com.example.surveys.entity.question.Question;
+import org.springframework.data.repository.CrudRepository;
+
+public interface QuestionRepository extends CrudRepository<Question, Long> {
 }

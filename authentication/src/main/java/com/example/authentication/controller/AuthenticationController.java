@@ -67,7 +67,7 @@ public class AuthenticationController {
 
     @PostMapping("/signin")
     public ResponseEntity<?> signIn(@RequestBody SignInRequest request) {
-        Authentication authentication = null;
+        Authentication authentication;
         try {
             authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         } catch (AuthenticationException e) {

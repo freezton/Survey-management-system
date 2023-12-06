@@ -1,13 +1,17 @@
 package com.example.surveys.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "users")
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -15,22 +19,6 @@ public class User {
     private Long id;
 
     @Column(unique = true)
-    private String email;
-
-    private String password;
-
-    @Column(unique = true)
     private String username;
 
-    @Transient
-    private List<Long> surveyIds;
-
-    public User() {
-    }
-
-    public User(String email, String password, String username) {
-        this.email = email;
-        this.password = password;
-        this.username = username;
-    }
 }
