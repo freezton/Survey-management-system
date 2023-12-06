@@ -1,2 +1,6 @@
-package com.example.surveys.service;public class UserService {
+package com.example.surveys.service;
+
+public interface UserService {
+
+    boolean isUserExists(Long id);
 }

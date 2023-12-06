@@ -1,8 +1,10 @@
 package com.example.surveys.entity.question;
 
 import com.example.surveys.entity.Option;
-import com.example.surveys.entity.enums.QuestionType;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -10,18 +12,24 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Entity
-@JsonTypeName("single_choice")
 @AllArgsConstructor
 @NoArgsConstructor
+@DiscriminatorValue("single_choice")
+@JsonTypeName("single_choice")
 public class SingleChoiceQuestion extends Question {
 
 //    private final QuestionType type = QuestionType.SINGLE_CHOICE;
 
-    @OneToMany(mappedBy = "question")
-    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Option> options;
+
+    {
+        options = new ArrayList<>();
+    }
 }

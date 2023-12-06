@@ -1,13 +1,12 @@
 package com.example.surveys.entity;
 
 import com.example.surveys.entity.question.Question;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "options")
 @AllArgsConstructor
@@ -18,11 +17,18 @@ public class Option {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "question_id")
-    @EqualsAndHashCode.Exclude
+    @JsonBackReference
     private Question question;
 
     private String answer;
 
+    @Override
+    public String toString() {
+        return "Option{" +
+                "id=" + id +
+                ", answer='" + answer + '\'' +
+                '}';
+    }
 }

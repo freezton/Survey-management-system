@@ -11,4 +11,6 @@ public interface SurveyRepository extends CrudRepository<Survey, Long> {
 
     Optional<Survey> findById(Long id);
 
+    Survey saveAndFlush(Survey survey);
+
 }
