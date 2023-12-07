@@ -39,7 +39,7 @@ public class SurveyController {
         return new ResponseEntity<>(updatedSurvey, HttpStatus.OK);
     }
 
-    @GetMapping("get")
+    @GetMapping("/get")
     public ResponseEntity<Survey> getSurvey(@RequestParam Long surveyId) {
         if (!surveyService.isSurveyExists(surveyId)) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

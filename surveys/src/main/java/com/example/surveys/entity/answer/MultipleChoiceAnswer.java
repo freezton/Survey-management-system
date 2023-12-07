@@ -11,6 +11,6 @@ import java.util.List;
 public class MultipleChoiceAnswer extends Answer {
 
     @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "options_id")
+    @JoinTable(name = "option_id")
     private List<Option> options;
 }

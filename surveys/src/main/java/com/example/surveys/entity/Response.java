@@ -2,6 +2,7 @@ package com.example.surveys.entity;
 
 
 import com.example.surveys.entity.answer.Answer;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,15 +20,19 @@ public class Response {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "survey_id")
+//    private Survey survey;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "survey_id")
-    private Survey survey;
+    private Long userId;
 
-    @OneToMany(mappedBy = "response")
+    private Long surveyId;
+
+    @OneToMany(mappedBy = "response", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Answer> answers;
-
 }

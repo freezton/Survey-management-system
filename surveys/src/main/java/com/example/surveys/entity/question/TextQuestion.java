@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @DiscriminatorValue("text")
-@JsonTypeName("text")
 public class TextQuestion extends Question {
 
 }
